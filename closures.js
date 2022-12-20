@@ -1,13 +1,13 @@
 // Example
 const createCounter = () => {
-  let count = 0;
-  const getCount = () => count;
-  const increaseCount = () => count++;
+    let count = 0;
+    const getCount = () => count;
+    const increaseCount = () => count++;
 
-  return {
-    getCount,
-    increaseCount
-  };
+    return {
+        getCount,
+        increaseCount
+    };
 };
 const counter = createCounter();
 counter.increaseCount();
@@ -20,7 +20,17 @@ console.log(counter.getCount());
 // - addMessage method that adds a message to the array
 // - getMessage(index) method that returns the message at index index
 
-const createMessageHolder = () => {};
+const createMessageHolder = () => {
+    const messageArr = [];
+
+    const addMessage = (message) => {
+        messageArr.push(message)
+    }
+    const getMessage = (index) => {
+        return messageArr[index];
+    }
+    return (addMessage, getMessage);
+};
 
 // Test
 const messageHolder = createMessageHolder();
@@ -30,18 +40,18 @@ console.log(messageHolder.getMessage(0));
 // "Hello!""
 
 // Example: non-currying
-const addNumbers = function(num1, num2) {
-  return num1 + num2;
+const addNumbers = function (num1, num2) {
+    return num1 + num2;
 };
 console.log(addNumbers(5, 3));
 // 8
 
 // Example: currying
-const addToNumber = function(num1) {
-  const addToFirst = function(num2) {
-    return num1 + num2;
-  };
-  return addToFirst;
+const addToNumber = function (num1) {
+    const addToFirst = function (num2) {
+        return num1 + num2;
+    };
+    return addToFirst;
 };
 const addThree = addToNumber(3);
 console.log(addThree(9));
@@ -55,7 +65,12 @@ console.log(addThree(41));
 // This will return a function a function greet
 // - This accepts a single argument, name (i.e. "Matt")
 // - This function should return the greeting combined with the name, (i.e. "Hello Matt")
-const createGreeting = function(greeting) {};
+const createGreeting = function (greeting) {
+    const greet = (name) => {
+        return `${greeting}, ${name}`
+    }
+    return greet
+};
 
 // Test
 const welcomeGreet = createGreeting('Welcome');
